@@ -86,9 +86,6 @@ function collisionDetection() {
             let b = bricks[c][r];
             if (b.status == 1 ){
                 if(x > b.x && x < b.x+brickWidth && y > b.y && y < b.y+brickHeight) {
-                    // for (i=0; i<brickRowCount; i++){
-
-                    // }
                     dy = -dy;
                     b.status = 0;
                     generarNuevoColor();
@@ -143,8 +140,8 @@ function draw() {
     else if(y + dy > canvas.height-ballRadius) {
         if(x > paddleX && x < paddleX + paddleWidth) {
             dy = -dy;
-            ang = (paddleX/(paddleWidth/2))*5
-            console.log(ang)
+            ang = paddleX/(paddleWidth/2)
+            
             
             // if(x > ang-ang/2 && x < ang+ang/2){
             //     //console.log('no papi')
@@ -154,16 +151,18 @@ function draw() {
                 
             //     dx = -dx
             // }
-            if((paddleWidth/2)>ang){
-                dx += 2;
-            } else if ((paddleWidth/2)<ang){
-                dx = -dx;
+            if(ang>x){
+                dx = (dx*ang);
+            } else if (ang<x){
+                dx = -((dx/ang)+dx);
+                console.log(dx)
             }
             
         }
         else {
             // alert("GAME OVER");
             // document.location.reload();
+            dy = -dy;
         }
     }
     
@@ -178,5 +177,5 @@ function draw() {
     y += dy;
 }
 
-// ----Hola Hector----
+// ----sus----
 setInterval(draw, fps);
