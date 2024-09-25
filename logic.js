@@ -161,7 +161,7 @@ function draw() {
         }
         else {
             // alert("GAME OVER");
-            // document.location.reload();
+            document.location.reload();
             dy = -dy;
         }
     }
